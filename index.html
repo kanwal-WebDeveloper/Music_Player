@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Music Player</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="card">
+    <div class="nav">
+        <button class="nav-btn"><i class="fa-solid fa-angle-left"></i></button>
+        <button class="nav-btn"><i class="fa-solid fa-bars"></i></button>
+    </div>
+
+    <div class="art-section">
+        <i class="fa-solid fa-music note-left"></i>
+        <i class="fa-solid fa-music note-right"></i>
+
+        <div class="dots left">
+            <div class="dot-row"><div class="dot"></div><div class="dot"></div><div class="dot"></div></div>
+            <div class="dot-row"><div class="dot"></div><div class="dot"></div><div class="dot"></div></div>
+            <div class="dot-row"><div class="dot"></div><div class="dot"></div><div class="dot"></div></div>
+            <div class="dot-row"><div class="dot"></div><div class="dot"></div><div class="dot"></div></div>
+        </div>
+
+        <div class="ring-wrap">
+            <svg class="ring-svg" viewBox="0 0 165 165">
+                <circle class="ring-bg" cx="82.5" cy="82.5" r="75"/>
+                <circle class="ring-progress" cx="82.5" cy="82.5" r="75" id="ringProgress"/>
+            </svg>
+            <img src="ChatGPT Image May 26, 2026, 09_01_52 PM.png" class="song-img" id="songImg"
+                 onerror="this.style.display='none'; document.getElementById('imgFallback').style.display='flex';"
+                 alt="Album Art">
+            <div class="song-img-placeholder" id="imgFallback" style="display:none;">
+                <i class="fa-solid fa-music"></i>
+            </div>
+        </div>
+
+        <div class="dots right">
+            <div class="dot-row"><div class="dot"></div><div class="dot"></div><div class="dot"></div></div>
+            <div class="dot-row"><div class="dot"></div><div class="dot"></div><div class="dot"></div></div>
+            <div class="dot-row"><div class="dot"></div><div class="dot"></div><div class="dot"></div></div>
+            <div class="dot-row"><div class="dot"></div><div class="dot"></div><div class="dot"></div></div>
+        </div>
+    </div>
+
+    <div class="song-info">
+        <div class="song-title">Unstoppable</div>
+        <div class="song-artist">Sia</div>
+    </div>
+
+    <div class="tagline-pill">
+        <i class="fa-solid fa-chart-simple"></i>
+        Feel the beat. Keep going.
+    </div>
+
+    <div class="progress-section">
+        <div class="time-row">
+            <span id="currentTime">0:00</span>
+            <span id="totalTime">0:00</span>
+        </div>
+        <input type="range" id="progress" value="0" min="0" max="100">
+    </div>
+
+    <div class="controls">
+        <button class="ctrl-btn" id="shuffleBtn"><i class="fa-solid fa-shuffle"></i></button>
+        <button class="ctrl-btn" id="prevBtn"><i class="fa-solid fa-backward-step"></i></button>
+        <button class="play-btn" id="playBtn"><i class="fa-solid fa-play" id="ctrlIcon"></i></button>
+        <button class="ctrl-btn" id="nextBtn"><i class="fa-solid fa-forward-step"></i></button>
+        <button class="ctrl-btn" id="repeatBtn"><i class="fa-solid fa-rotate"></i></button>
+    </div>
+
+    <div class="volume-section">
+        <i class="fa-solid fa-volume-low volume-icon"></i>
+        <input type="range" id="volume" class="vol" value="80" min="0" max="100">
+        <i class="fa-solid fa-volume-high volume-icon"></i>
+    </div>
+
+    <div class="footer">
+        <i class="fa-solid fa-heart heart"></i>
+        <span>Designed &amp; Developed by <strong>Kanwal Imran</strong></span>
+    </div>
+
+    <audio id="song" autoplay>
+        <source src="WhatsApp Audio 2026-05-24 at 9.54.12 PM.mpeg" type="audio/mpeg">
+    </audio>
+</div>
+<script src="script.js"></script>
+</body>
+</html>
