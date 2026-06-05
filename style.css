@@ -1,35 +1,55 @@
 * {
-    /* margin: 0;
-    padding: 0; */
+    margin: 0;
+    padding: 0;
     box-sizing: border-box;
     font-family: 'Poppins', sans-serif;
 }
 
+/* Body as flex container - card ko center karne ke liye */
 html, body {
     width: 100%;
-    height: 100%;
-    overflow: hidden;
+    min-height: 100vh;
 }
 
 body {
-    background: #e8e8e8;
+    background: #E8F0EF;
     display: flex;
     align-items: center;
     justify-content: center;
-    height: 100vh;
+    padding: 20px;  /* background dikhne ke liye */
 }
 
+/* CARD - auto height, center, background around */
 .card {
     background: #f5f5f5;
     width: 360px;
-    height: 100vh;
-    border-radius: 0;
-    padding: 16px 24px 14px 24px;
-    position: relative;
-    overflow: hidden;
+    max-width: 100%;
+    height: auto;           /* jitni content ki height utni */
+    max-height: 90vh;       /* agar screen chhoti ho to scroll aaye */
+    margin: 0 auto;
+    padding: 16px 24px 20px 24px;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    gap: 15px;
+    overflow-y: auto;       /* zyada content ho to scroll */
+    overflow-x: hidden;
+    border-radius: 28px;    /* thoda rounded looks better */
+    box-shadow: 0 20px 35px -10px rgba(0,0,0,0.2);
+    scrollbar-width: thin;
+    overflow: hidden;       /* horizontal scroll hide karne ke liye */
+}
+
+/* Scrollbar styling */
+.card::-webkit-scrollbar {
+    width: 4px;
+}
+.card::-webkit-scrollbar-track {
+    background: #dce8df;
+    border-radius: 10px;
+}
+.card::-webkit-scrollbar-thumb {
+    background: #1a5c30;
+    border-radius: 10px;
 }
 
 /* Nav */
@@ -52,9 +72,12 @@ body {
     box-shadow: 0 2px 8px rgba(0,0,0,0.08);
     color: #1a5c30;
     font-size: 14px;
-    transition: box-shadow 0.2s;
+    transition: 0.2s;
 }
-.nav-btn:hover { box-shadow: 0 4px 16px rgba(0,0,0,0.15); }
+.nav-btn:hover {
+    box-shadow: 0 4px 16px rgba(0,0,0,0.15);
+    transform: scale(1.02);
+}
 
 /* Art Section */
 .art-section {
@@ -64,7 +87,6 @@ body {
     position: relative;
     flex-shrink: 0;
 }
-
 .dots {
     position: absolute;
     top: 50%;
@@ -82,7 +104,6 @@ body {
     border-radius: 50%;
     background: #b5d4bf;
 }
-
 .note-left, .note-right {
     position: absolute;
     color: #5a9e70;
@@ -118,7 +139,7 @@ body {
     stroke-linecap: round;
     stroke-dasharray: 471;
     stroke-dashoffset: 471;
-    transition: stroke-dashoffset 0.4s ease;
+    transition: stroke-dashoffset 0.2s ease;
 }
 .song-img {
     width: 138px;
@@ -181,7 +202,10 @@ body {
 .tagline-pill i { color: #2a6b3e; font-size: 12px; }
 
 /* Progress */
-.progress-section { flex-shrink: 0; }
+.progress-section {
+    flex-shrink: 0;
+    width: 100%;
+}
 .time-row {
     display: flex;
     justify-content: space-between;
@@ -239,9 +263,12 @@ input[type="range"]::-moz-range-thumb {
     color: #2a6b3e;
     font-size: 14px;
     box-shadow: 0 2px 8px rgba(0,0,0,0.07);
-    transition: background 0.2s, transform 0.15s;
+    transition: 0.2s;
 }
-.ctrl-btn:hover { background: #e0ebe3; transform: scale(1.07); }
+.ctrl-btn:hover {
+    background: #e0ebe3;
+    transform: scale(1.07);
+}
 .play-btn {
     width: 58px;
     height: 58px;
@@ -255,9 +282,12 @@ input[type="range"]::-moz-range-thumb {
     color: #fff;
     font-size: 20px;
     box-shadow: 0 6px 20px rgba(26,92,48,0.35);
-    transition: background 0.2s, transform 0.15s;
+    transition: 0.2s;
 }
-.play-btn:hover { background: #155227; transform: scale(1.06); }
+.play-btn:hover {
+    background: #155227;
+    transform: scale(1.06);
+}
 
 /* Volume */
 .volume-section {
@@ -265,6 +295,8 @@ input[type="range"]::-moz-range-thumb {
     align-items: center;
     gap: 8px;
     flex-shrink: 0;
+    width: 100%;
+    padding-top: 4px;
 }
 .volume-icon {
     color: #7a9a84;
@@ -278,7 +310,7 @@ input[type="range"].vol {
     background: #d0e3d6;
 }
 
-/* Footer */
+/* Footer - card ke andar niche */
 .footer {
     text-align: center;
     font-size: 11px;
@@ -288,7 +320,37 @@ input[type="range"].vol {
     justify-content: center;
     gap: 5px;
     flex-shrink: 0;
+    margin-top: 6px;
+    padding-bottom: 4px;
 }
-.footer .heart { color: #1a5c30; font-size: 12px; }
-.footer span { color: #aaa; }
-.footer strong { color: #1a5c30; font-weight: 600; }
+.footer strong {
+    color: #1a5c30;
+    font-weight: 600;
+}
+
+/* Responsive: small screens */
+@media (max-width: 450px) {
+    body {
+        padding: 12px;
+    }
+    .card {
+        width: 100%;
+        padding: 14px 18px 18px 18px;
+        gap: 12px;
+    }
+    .ring-wrap {
+        width: 150px;
+        height: 150px;
+    }
+    .song-img, .song-img-placeholder {
+        width: 125px;
+        height: 125px;
+    }
+    .ring-svg {
+        width: 150px;
+        height: 150px;
+    }
+    .controls {
+        gap: 6px;
+    }
+}
